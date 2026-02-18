@@ -6,13 +6,36 @@ st.set_page_config(page_title="Vocab Trainer", page_icon="📚")
 st.title("📚 Entraînement Vocabulaire Anglais")
 
 vocab = {
-    "apple": "pomme",
-    "house": "maison",
-    "car": "voiture",
-    "book": "livre",
-    "dog": "chien",
-    "water": "eau",
-    "happy": "heureux"
+  "sat through": "assister à jusqu'au bout",
+    "droned on": "s'éterniser",
+    "peculiar": "particulier",
+    "frenzy": "frénésie",
+    "to pledge": "promettre",
+    "corporate life": "vie en entreprise",
+    "yet something": "pourtant quelque chose",
+    "onboarding": "intégration",
+    "to factor": "prendre en compte",
+    "factored in": "pris en compte",
+    "baffling": "déconcertant",
+    "chasm": "fossé",
+    "bite-sized": "format court",
+    "to tailor": "adapter",
+    "stubbornly": "obstinément",
+    "one-size-fits-all": "solution universelle",
+    "to check out": "se déconnecter mentalement",
+    "wholesale": "à grande échelle",
+    "substantial": "important",
+    "plummeted": "s'est effondré",
+    "completion rates": "taux d'achèvement",
+    "crack the code": "trouver la solution",
+    "blended learning": "formation hybride",
+    "accountability": "responsabilité",
+    "nine-tenths": "9/10",
+    "unmistakable": "indéniable",
+    "bridge this gap": "réduire l'écart",
+    "to remain": "demeurer",
+    "takeover bid": "offre de rachat",
+    "merger": "fusion"
 }
 
 # Initialisation
