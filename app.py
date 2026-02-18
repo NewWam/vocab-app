@@ -15,8 +15,7 @@ vocab = {
     "happy": "heureux"
 }
 
-# -------- INITIALISATION --------
-
+# Initialisation
 if "score" not in st.session_state:
     st.session_state.score = 0
 
@@ -29,18 +28,11 @@ if "mode" not in st.session_state:
 if "current_word" not in st.session_state:
     st.session_state.current_word = random.choice(list(vocab.keys()))
 
-if "user_input" not in st.session_state:
-    st.session_state.user_input = ""
-
-# -------- FONCTION NOUVELLE QUESTION --------
-
 def new_question():
     st.session_state.mode = random.choice(["EN→FR", "FR→EN"])
     st.session_state.current_word = random.choice(list(vocab.keys()))
-    st.session_state.user_input = ""  # ← vide la case
 
-# -------- LOGIQUE QUESTION --------
-
+# Déterminer la question
 if st.session_state.mode == "EN→FR":
     question = st.session_state.current_word
     correct_answer = vocab[st.session_state.current_word]
@@ -51,15 +43,14 @@ else:
 st.subheader(f"Mode : {st.session_state.mode}")
 st.markdown(f"### Traduire : **{question}**")
 
-# IMPORTANT : on lie la clé au session_state
-user_input = st.text_input("Ta réponse :", key="user_input")
+user_input = st.text_input("Ta réponse :")
 
 col1, col2 = st.columns(2)
 
 with col1:
     if st.button("Vérifier"):
         st.session_state.total += 1
-        if st.session_state.user_input.strip().lower() == correct_answer.lower():
+        if user_input.strip().lower() == correct_answer.lower():
             st.success("✅ Correct !")
             st.session_state.score += 1
         else:
