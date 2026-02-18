@@ -38,7 +38,7 @@ vocab = {
     "merger": "fusion"
 }
 
-# -------- MODE CHOISI --------
+# -------- MODE --------
 mode = st.radio(
     "Choisir le mode :",
     ["Anglais → Français", "Français → Anglais"]
@@ -51,10 +51,14 @@ if "current_word" not in st.session_state:
 if "input_key" not in st.session_state:
     st.session_state.input_key = 0
 
+if "hint_level" not in st.session_state:
+    st.session_state.hint_level = 0
+
 # -------- NOUVELLE QUESTION --------
 def new_question():
     st.session_state.current_word = random.choice(list(vocab.keys()))
     st.session_state.input_key += 1
+    st.session_state.hint_level = 0
 
 # -------- LOGIQUE QUESTION --------
 if mode == "Anglais → Français":
@@ -72,7 +76,8 @@ user_input = st.text_input(
     key=f"user_input_{st.session_state.input_key}"
 )
 
-col1, col2 = st.columns(2)
+# -------- BOUTONS --------
+col1, col2, col3 = st.columns(3)
 
 with col1:
     if st.button("Vérifier"):
@@ -82,6 +87,24 @@ with col1:
             st.error(f"❌ Faux → {correct_answer}")
 
 with col2:
+    if st.button("Indice"):
+        st.session_state.hint_level += 1
+
+with col3:
     if st.button("Mot suivant"):
         new_question()
         st.rerun()
+
+# -------- AFFICHAGE INDICE --------
+if st.session_state.hint_level > 0:
+    length = len(correct_answer)
+
+    if st.session_state.hint_level == 1:
+        hint = correct_answer[0] + "_" * (length - 1)
+    elif st.session_state.hint_level == 2:
+        half = length // 2
+        hint = correct_answer[:half] + "_" * (length - half)
+    else:
+        hint = correct_answer
+
+    st.info(f"💡 Indice : {hint}")
