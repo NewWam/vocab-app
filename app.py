@@ -32,7 +32,7 @@ vocab = {
     "accountability": "responsabilité",
     "nine-tenths": "9/10",
     "unmistakable": "indéniable",
-    "bridge this gap": "réduire l'écart",
+    "bridge the gap": "réduire l'écart",
     "to remain": "demeurer",
     "takeover bid": "offre de rachat",
     "merger": "fusion"
